@@ -37,7 +37,7 @@ class GameLogic(context: Context, resources: Resources) {
         width = w
         height = h
         Log.d(TAG, "CreateSurface: Window size: $width x $height")
-        onSurfaceCreatedListener.SurfaceCreated(width, height)
+        onSurfaceCreatedListener?.SurfaceCreated(width, height)
     }
 
     fun width(): Int { return width}

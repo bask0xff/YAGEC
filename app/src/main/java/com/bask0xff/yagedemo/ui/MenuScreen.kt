@@ -42,7 +42,7 @@ class MenuScreen(name: String, private val gameLogic: GameLogic) :
     override fun SwitchScreen(screen: IScreen) {}
 
     override fun Render(frames: Int, canvas: Canvas?) {
-        canvas?.drawColor(Color.argb(255, 111, 111, 111))
+        canvas?.drawColor(Color.argb(255, 77, 77, 77))
         val paint = Paint()
         paint.color = Color.YELLOW
         paint.isAntiAlias = true

@@ -23,10 +23,14 @@ class GameLogic(context: Context, resources: Resources) {
         screens = HashMap()
     }
 
-    fun CreateSurface(width: Int, height: Int) {
-        this.width = width
-        this.height = height
+    fun CreateSurface(w: Int, h: Int) {
+        width = w
+        height = h
+        Log.d(TAG, "CreateSurface: Window size: $width x $height")
     }
+
+    fun width(): Int { return width}
+    fun height(): Int { return height}
 
     fun ActiveScreen(): IScreen? {
         return activeScreen

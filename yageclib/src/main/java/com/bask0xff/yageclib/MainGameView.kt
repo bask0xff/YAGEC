@@ -32,7 +32,7 @@ class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScree
     override fun surfaceCreated(holder: SurfaceHolder) {
         // at this point the surface is created and
         // we can safely start the game loop
-        Log.i(TAG, "surfaceCreated: " + width + "x" + height)
+        Log.i(TAG, "surfaceCreated: $width x $height")
         gameLogic.CreateSurface(width, height)
 
         //solve problem:

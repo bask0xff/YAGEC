@@ -5,12 +5,15 @@ import android.content.Context
 import android.content.pm.ActivityInfo
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.os.*
 import android.os.StrictMode.ThreadPolicy
 import android.util.Log
 import android.view.KeyEvent
 import android.view.SurfaceView
 import android.view.WindowManager
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.bask0xff.yageclib.GameLogic
@@ -71,6 +74,15 @@ class MainActivity : AppCompatActivity() {
         //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);
         val layout = RelativeLayout(context)
         layout.addView(mainGameView)
+
+        val imageView = ImageView(this)
+        // setting height and width of imageview
+        imageView.layoutParams = LinearLayout.LayoutParams(400, 400)
+        imageView.x = 20F //setting margin from left
+        imageView.y = 555F //setting margin from top
+        imageView.setBackgroundColor(Color.RED)
+
+        layout?.addView(imageView)
 
         if (true) {
             //show canvas game screen

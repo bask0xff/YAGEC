@@ -91,6 +91,8 @@ class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScree
 				thread.setRunning(false);
 				((Activity)getContext()).finish();
 			}*/
+            val activeScreen: IScreen = gameLogic.ActiveScreen()!!
+            activeScreen.OnTouchDown(event.x, event.y)
         }
         if (event.action == MotionEvent.ACTION_MOVE) {
             // the gestures
@@ -99,7 +101,7 @@ class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScree
         }
         if (event.action == MotionEvent.ACTION_UP) {
             val activeScreen: IScreen = gameLogic.ActiveScreen()!!
-            activeScreen.OnTouch(event.x, event.y)
+            activeScreen.OnTouchUp(event.x, event.y)
         }
         return true
     }

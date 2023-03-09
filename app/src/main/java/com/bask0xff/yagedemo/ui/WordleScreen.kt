@@ -29,17 +29,18 @@ class WordleScreen(name: String, private val gameLogic: GameLogic) :
         }
     }
 
-    override fun OnTouch(x: Float, y: Float) {
-        Strike()
+    override fun OnTouchUp(x: Float, y: Float) {
         //SwitchScreen(BUTTON_NAME_MENU);
-        Log.d(TAG, "OnTouch: ${x.toInt()}, ${y.toInt()}")
+        Log.d(TAG, "OnTouchUp: ${x.toInt()}, ${y.toInt()}")
     }
 
     override fun OnMove(event: MotionEvent) {
         Log.d(TAG, "OnMove ${event.action}: ${event.x.toInt()}, ${event.y.toInt()}")
     }
 
-    private fun Strike() {}
+    override fun OnTouchDown(x: Float, y: Float) {
+        Log.d(TAG, "OnTouchDown: ${x.toInt()}, ${y.toInt()}")
+    }
 
     override fun OnDestroy() {
         Log.d(TAG, "OnDestroy: ")

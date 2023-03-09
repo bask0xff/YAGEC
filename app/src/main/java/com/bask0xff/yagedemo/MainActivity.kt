@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         // Demonstration possibility to apply any Views over mainGameView. For example, for AdMob View, Buttons, e.t.c.
         val button = Button(this)
 
-        gameLogic!!.SetOnSurfaceCreatedListener(listener = object : IOnSurfaceCreatedListener {
+        gameLogic!!.SetOnSurfaceCreatedListener(object : IOnSurfaceCreatedListener {
             override fun SurfaceCreated(w: Int, h: Int) {
                 Log.d(TAG, "SurfaceCreated!!!!!: ${w} x ${h}")
                 button.layoutParams = LinearLayout.LayoutParams( (w - 2 *marginHorizontal).toInt(), buttonHeight.toInt())

@@ -3,6 +3,7 @@ package com.bask0xff.yageclib
 
 import android.graphics.Canvas
 import android.util.Log
+import android.view.MotionEvent
 
 open class BaseScreen(private val name: String, private val gameLogic: GameLogic) : IScreen {
     fun Name(): String {
@@ -36,9 +37,9 @@ open class BaseScreen(private val name: String, private val gameLogic: GameLogic
     override fun Update() {}
     override fun Destroy() {}
     override fun OnTouch(x: Float, y: Float) {}
+    override fun OnMove(event: MotionEvent) {}
 
     companion object {
         private val TAG = BaseScreen::class.java.simpleName
     }
 }
-

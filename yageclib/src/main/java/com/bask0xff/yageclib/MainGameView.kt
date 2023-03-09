@@ -94,10 +94,12 @@ class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScree
         }
         if (event.action == MotionEvent.ACTION_MOVE) {
             // the gestures
+            val activeScreen: IScreen = gameLogic.ActiveScreen()!!
+            activeScreen.OnMove(event)
         }
         if (event.action == MotionEvent.ACTION_UP) {
-            //val activeScreen: IScreen = gameLogic.ActiveScreen()
-            //activeScreen.OnTouch(event.x, event.y)
+            val activeScreen: IScreen = gameLogic.ActiveScreen()!!
+            activeScreen.OnTouch(event.x, event.y)
         }
         return true
     }

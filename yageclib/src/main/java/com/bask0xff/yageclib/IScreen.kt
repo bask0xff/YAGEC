@@ -1,6 +1,7 @@
 package com.bask0xff.yageclib
 
 import android.graphics.Canvas
+import android.view.MotionEvent
 
 interface IScreen {
     fun OnCreate()
@@ -10,6 +11,7 @@ interface IScreen {
     fun Update()
     fun Destroy()
     fun OnTouch(x: Float, y: Float)
+    fun OnMove(event: MotionEvent)
     fun SwitchScreen(screen: IScreen)
     fun SwitchScreen(name: String)
     fun OnDestroy()

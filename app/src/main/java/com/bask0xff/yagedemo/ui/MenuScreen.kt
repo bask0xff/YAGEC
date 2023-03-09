@@ -4,6 +4,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.Log
+import android.view.MotionEvent
 import com.bask0xff.yageclib.BaseScreen
 import com.bask0xff.yageclib.GameLogic
 import com.bask0xff.yageclib.IScreen
@@ -31,6 +32,10 @@ class MenuScreen(name: String, private val gameLogic: GameLogic) :
     override fun OnTouch(x: Float, y: Float) {
         Strike()
         //SwitchScreen(BUTTON_NAME_MENU);
+    }
+
+    override fun OnMove(event: MotionEvent) {
+        Log.d(TAG, "OnMove ${event.action}: ${event.x.toInt()}, ${event.y.toInt()}")
     }
 
     private fun Strike() {}

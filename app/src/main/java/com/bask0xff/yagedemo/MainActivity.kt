@@ -14,6 +14,7 @@ import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.bask0xff.yageclib.BaseScreen
 import com.bask0xff.yageclib.GameLogic
+import com.bask0xff.yageclib.GameLogic.IOnSurfaceCreatedListener
 import com.bask0xff.yageclib.IScreen
 import com.bask0xff.yageclib.MainGameView
 import com.bask0xff.yagedemo.ui.MenuScreen
@@ -81,21 +82,28 @@ class MainActivity : AppCompatActivity() {
         layout.addView(mainGameView)
 
         // Demonstration possibility to apply any Views over mainGameView. For example, for AdMob View, Buttons, e.t.c.
-
         val button = Button(this)
-        // setting height and width of imageview
-        button.layoutParams = LinearLayout.LayoutParams(720 - 40, 150)
-        button.x = 20F //setting margin from left
-        button.y = 555F //setting margin from top
-        button.text = "Press me!"
-        button.setOnClickListener {
-            if( (gameLogic!!.ActiveScreen() as BaseScreen).Name() == SCREEN_NAME_WORDLE)
-                gameLogic!!.SetActiveScreen(SCREEN_NAME_MENU)
-            else
-                gameLogic!!.SetActiveScreen(SCREEN_NAME_WORDLE)
+
+        var onSurfaceCreatedListener = object : IOnSurfaceCreatedListener {
+            override fun SurfaceCreated(w: Int, h: Int) {
+                Log.d(TAG, "SurfaceCreated!!!!!: ${w} x ${h}")
+                button.layoutParams = LinearLayout.LayoutParams(720 - 40, 150)
+                button.x = 20F
+                button.y = 3f*h/4f
+                button.text = "SurfaceCreated!"
+
+                button.setOnClickListener {
+                    if( (gameLogic!!.ActiveScreen() as BaseScreen).Name() == SCREEN_NAME_WORDLE)
+                        gameLogic!!.SetActiveScreen(SCREEN_NAME_MENU)
+                    else
+                        gameLogic!!.SetActiveScreen(SCREEN_NAME_WORDLE)
+                }
+
+                layout?.addView(button)
+            }
         }
 
-        layout?.addView(button)
+        gameLogic!!.SetOnSurfaceCreatedListener(onSurfaceCreatedListener)
 
         //show canvas game screen
         setContentView(layout)

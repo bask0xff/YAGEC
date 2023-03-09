@@ -23,10 +23,21 @@ class GameLogic(context: Context, resources: Resources) {
         screens = HashMap()
     }
 
+    interface IOnSurfaceCreatedListener{
+        fun SurfaceCreated(w: Int, h: Int)
+    }
+
+    lateinit var onSurfaceCreatedListener: IOnSurfaceCreatedListener
+
+    fun SetOnSurfaceCreatedListener(listener: IOnSurfaceCreatedListener){
+        this.onSurfaceCreatedListener = listener
+    }
+
     fun CreateSurface(w: Int, h: Int) {
         width = w
         height = h
         Log.d(TAG, "CreateSurface: Window size: $width x $height")
+        onSurfaceCreatedListener.SurfaceCreated(width, height)
     }
 
     fun width(): Int { return width}
@@ -71,6 +82,10 @@ class GameLogic(context: Context, resources: Resources) {
         Log.i(TAG, "ActiveScreen is $name")
         activeScreen?.OnShow()
         Log.i(TAG, "ActiveScreen $name shown")
+    }
+
+    fun onSurfaceCreated(function: () -> Unit) {
+        Log.d(TAG, "onSurfaceCreated: ")
     }
 
 }

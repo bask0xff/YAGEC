@@ -1,10 +1,13 @@
-package com.bask0xff.yageclib
+package com.bask0xff.yagedemo.ui
 
 
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.Log
+import com.bask0xff.yageclib.BaseScreen
+import com.bask0xff.yageclib.GameLogic
+import com.bask0xff.yageclib.IScreen
 
 class WordleScreen(name: String, private val gameLogic: GameLogic) :
     BaseScreen(name, gameLogic) {
@@ -53,7 +56,6 @@ class WordleScreen(name: String, private val gameLogic: GameLogic) :
             canvas?.drawCircle(222f, 333f, 50f-i, paint);
         }
 
-
         ticks++
     }
 
@@ -69,3 +71,4 @@ class WordleScreen(name: String, private val gameLogic: GameLogic) :
         Log.d(TAG, "WordleScreen: $name")
     }
 }
+

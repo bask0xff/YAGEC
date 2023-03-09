@@ -16,7 +16,7 @@ import java.lang.Thread.State
  * This is the main surface that handles the ontouch events and draws
  * the image to the screen.
  */
-class MainGameView(context: Context?, gameLogic: GameLogic) :
+class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScreen) :
     SurfaceView(context), SurfaceHolder.Callback {
     private val SCREEN_NAME_WORDLE = "Wordle"
 
@@ -130,7 +130,7 @@ class MainGameView(context: Context?, gameLogic: GameLogic) :
         // create the game loop thread
         thread = MainThread(holder, this)
 
-        val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic)
+        //val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic)
         /*val loadingScreen: IScreen = LoadingScreen(SCREEN_NAME_LOADING, gameLogic)
         val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic)
         val newGame: IScreen = NewGameScreen(SCREEN_NAME_NEW_GAME, gameLogic)
@@ -142,7 +142,7 @@ class MainGameView(context: Context?, gameLogic: GameLogic) :
         gameLogic.AddScreen((settingsScreen as SettingsScreen).Name(), settingsScreen)
        */
 
-        gameLogic.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
+        //gameLogic.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
         gameLogic.SetActiveScreen(wordleScreen)
 
         isFocusable = true

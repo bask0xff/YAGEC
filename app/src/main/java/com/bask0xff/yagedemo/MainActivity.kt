@@ -12,11 +12,11 @@ import android.view.KeyEvent
 import android.view.SurfaceView
 import android.view.WindowManager
 import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bask0xff.yageclib.GameLogic
+import com.bask0xff.yageclib.IScreen
 import com.bask0xff.yageclib.MainGameView
-import com.bask0xff.yageclib.WordleScreen
+import com.bask0xff.yagedemo.ui.WordleScreen
 import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
@@ -62,7 +62,10 @@ class MainActivity : AppCompatActivity() {
         context = this
         gameLogic = GameLogic(context as MainActivity, resources)
 
-        mainGameView = MainGameView(this, gameLogic!!)
+        val wordleScreen: IScreen = WordleScreen("WordleScreen", gameLogic!!)
+        gameLogic!!.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
+
+        mainGameView = MainGameView(this, gameLogic!!, wordleScreen)
         //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);
 
         //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);

@@ -53,7 +53,7 @@ class WordleScreen(name: String, private val gameLogic: GameLogic) :
         paint.isAntiAlias = true
         for(i in 0..10){
             paint.setColor(Color.argb(255, (255f * ((i)/10f)).toInt(), frames % 255, 0));
-            canvas?.drawCircle(222f, 333f, 50f-i, paint);
+            canvas?.drawCircle(gameLogic.width()/2f, gameLogic.height()/4f, 50f-i, paint);
         }
 
         ticks++

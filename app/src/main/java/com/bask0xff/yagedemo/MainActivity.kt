@@ -59,24 +59,7 @@ class MainActivity : AppCompatActivity() {
         context = this
         gameLogic = GameLogic(context as MainActivity, resources)
 
-        val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic!!)
-        gameLogic!!.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
-
-        val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic!!)
-        gameLogic!!.AddScreen((menuScreen as MenuScreen).Name(), menuScreen)
-
-        /*val loadingScreen: IScreen = LoadingScreen(SCREEN_NAME_LOADING, gameLogic)
-        gameLogic.AddScreen((loadingScreen as LoadingScreen).Name(), loadingScreen)
-
-        val newGame: IScreen = NewGameScreen(SCREEN_NAME_NEW_GAME, gameLogic)
-        gameLogic.AddScreen((newGame as NewGameScreen).Name(), newGame)
-
-        val settingsScreen: IScreen = SettingsScreen(SCREEN_NAME_SETTINGS, gameLogic)
-        gameLogic.AddScreen((settingsScreen as SettingsScreen).Name(), settingsScreen)
-       */
-
-        mainGameView = MainGameView(this, gameLogic!!, wordleScreen)
-        //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);
+        addNewScreens(gameLogic!!)
 
         val layout = RelativeLayout(context)
         layout.addView(mainGameView)
@@ -107,6 +90,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(layout)
 
     }
+
+    private fun addNewScreens(gameLogic: GameLogic) {
+        val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic!!)
+        gameLogic!!.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
+
+        val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic!!)
+        gameLogic!!.AddScreen((menuScreen as MenuScreen).Name(), menuScreen)
+
+        /*val loadingScreen: IScreen = LoadingScreen(SCREEN_NAME_LOADING, gameLogic)
+        gameLogic.AddScreen((loadingScreen as LoadingScreen).Name(), loadingScreen)
+
+        val newGame: IScreen = NewGameScreen(SCREEN_NAME_NEW_GAME, gameLogic)
+        gameLogic.AddScreen((newGame as NewGameScreen).Name(), newGame)
+
+        val settingsScreen: IScreen = SettingsScreen(SCREEN_NAME_SETTINGS, gameLogic)
+        gameLogic.AddScreen((settingsScreen as SettingsScreen).Name(), settingsScreen)
+       */
+
+        mainGameView = MainGameView(this, gameLogic!!, wordleScreen)
+        //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);
+    }
+
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {

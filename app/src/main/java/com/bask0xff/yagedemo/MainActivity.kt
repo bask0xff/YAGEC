@@ -87,10 +87,10 @@ class MainActivity : AppCompatActivity() {
         var onSurfaceCreatedListener = object : IOnSurfaceCreatedListener {
             override fun SurfaceCreated(w: Int, h: Int) {
                 Log.d(TAG, "SurfaceCreated!!!!!: ${w} x ${h}")
-                button.layoutParams = LinearLayout.LayoutParams(720 - 40, 150)
+                button.layoutParams = LinearLayout.LayoutParams(w - 40, 150)
                 button.x = 20F
-                button.y = 3f*h/4f
-                button.text = "SurfaceCreated!"
+                button.y = h - 150f - 16f
+                button.text = "Hit me!"
 
                 button.setOnClickListener {
                     if( (gameLogic!!.ActiveScreen() as BaseScreen).Name() == SCREEN_NAME_WORDLE)

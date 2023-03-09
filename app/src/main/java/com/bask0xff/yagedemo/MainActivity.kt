@@ -15,9 +15,11 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.bask0xff.yageclib.BaseScreen
 import com.bask0xff.yageclib.GameLogic
 import com.bask0xff.yageclib.IScreen
 import com.bask0xff.yageclib.MainGameView
+import com.bask0xff.yagedemo.ui.MenuScreen
 import com.bask0xff.yagedemo.ui.WordleScreen
 import java.util.concurrent.Executors
 
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     var keyBackCounter = 0;
     private val SCREEN_NAME_WORDLE = "Wordle"
+    private val SCREEN_NAME_MENU = "Menu"
 
     private var mainGameView //all game logic on one canvas: menu, game, settings, game over, etc
             : SurfaceView? = null
@@ -70,11 +73,11 @@ class MainActivity : AppCompatActivity() {
         val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic!!)
         gameLogic!!.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
 
+        val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic!!)
+        gameLogic!!.AddScreen((menuScreen as MenuScreen).Name(), menuScreen)
+
         /*val loadingScreen: IScreen = LoadingScreen(SCREEN_NAME_LOADING, gameLogic)
         gameLogic.AddScreen((loadingScreen as LoadingScreen).Name(), loadingScreen)
-
-        val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic)
-        gameLogic.AddScreen((menuScreen as MenuScreen).Name(), menuScreen)
 
         val newGame: IScreen = NewGameScreen(SCREEN_NAME_NEW_GAME, gameLogic)
         gameLogic.AddScreen((newGame as NewGameScreen).Name(), newGame)
@@ -97,6 +100,13 @@ class MainActivity : AppCompatActivity() {
         button.x = 20F //setting margin from left
         button.y = 555F //setting margin from top
         button.text = "Press me!"
+        button.setOnClickListener {
+            if( (gameLogic!!.ActiveScreen() as BaseScreen).Name() == SCREEN_NAME_WORDLE)
+                gameLogic!!.SetActiveScreen(SCREEN_NAME_MENU)
+            else
+                gameLogic!!.SetActiveScreen(SCREEN_NAME_WORDLE)
+        }
+
         layout?.addView(button)
 
         //show canvas game screen

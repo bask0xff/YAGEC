@@ -129,19 +129,6 @@ class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScree
         // create the game loop thread
         thread = MainThread(holder, this)
 
-        //val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic)
-        /*val loadingScreen: IScreen = LoadingScreen(SCREEN_NAME_LOADING, gameLogic)
-        val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic)
-        val newGame: IScreen = NewGameScreen(SCREEN_NAME_NEW_GAME, gameLogic)
-        val settingsScreen: IScreen = SettingsScreen(SCREEN_NAME_SETTINGS, gameLogic)
-        val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic)
-        gameLogic.AddScreen((loadingScreen as LoadingScreen).Name(), loadingScreen)
-        gameLogic.AddScreen((menuScreen as MenuScreen).Name(), menuScreen)
-        gameLogic.AddScreen((newGame as NewGameScreen).Name(), newGame)
-        gameLogic.AddScreen((settingsScreen as SettingsScreen).Name(), settingsScreen)
-       */
-
-        //gameLogic.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
         gameLogic.SetActiveScreen(wordleScreen)
 
         isFocusable = true

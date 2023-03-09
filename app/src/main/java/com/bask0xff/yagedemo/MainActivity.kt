@@ -67,8 +67,21 @@ class MainActivity : AppCompatActivity() {
         context = this
         gameLogic = GameLogic(context as MainActivity, resources)
 
-        val wordleScreen: IScreen = WordleScreen("WordleScreen", gameLogic!!)
+        val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic!!)
         gameLogic!!.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
+
+        /*val loadingScreen: IScreen = LoadingScreen(SCREEN_NAME_LOADING, gameLogic)
+        gameLogic.AddScreen((loadingScreen as LoadingScreen).Name(), loadingScreen)
+
+        val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic)
+        gameLogic.AddScreen((menuScreen as MenuScreen).Name(), menuScreen)
+
+        val newGame: IScreen = NewGameScreen(SCREEN_NAME_NEW_GAME, gameLogic)
+        gameLogic.AddScreen((newGame as NewGameScreen).Name(), newGame)
+
+        val settingsScreen: IScreen = SettingsScreen(SCREEN_NAME_SETTINGS, gameLogic)
+        gameLogic.AddScreen((settingsScreen as SettingsScreen).Name(), settingsScreen)
+       */
 
         mainGameView = MainGameView(this, gameLogic!!, wordleScreen)
         //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);

@@ -22,6 +22,10 @@ import com.bask0xff.yagedemo.ui.WordleScreen
 
 class MainActivity : AppCompatActivity() {
 
+    private val marginHorizontal = 20f
+    private val marginBottom = 16f
+    private val buttonHeight = 150f
+
     private val TAG = "MainActivity"
 
     var keyBackCounter = 0;
@@ -70,9 +74,9 @@ class MainActivity : AppCompatActivity() {
         gameLogic!!.SetOnSurfaceCreatedListener(listener = object : IOnSurfaceCreatedListener {
             override fun SurfaceCreated(w: Int, h: Int) {
                 Log.d(TAG, "SurfaceCreated!!!!!: ${w} x ${h}")
-                button.layoutParams = LinearLayout.LayoutParams(w - 40, 150)
-                button.x = 20F
-                button.y = h - 150f - 16f
+                button.layoutParams = LinearLayout.LayoutParams( (w - 2 *marginHorizontal).toInt(), buttonHeight.toInt())
+                button.x = marginHorizontal
+                button.y = h - buttonHeight - marginBottom
                 button.text = "Hit me!"
 
                 button.setOnClickListener {

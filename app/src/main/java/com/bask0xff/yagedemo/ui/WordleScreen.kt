@@ -1,6 +1,5 @@
 package com.bask0xff.yagedemo.ui
 
-
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -11,6 +10,7 @@ import com.bask0xff.yageclib.IScreen
 
 class WordleScreen(name: String, private val gameLogic: GameLogic) :
     BaseScreen(name, gameLogic) {
+
     private var ticks = 0
     private fun init() {
         for (j in 0..5) for (i in 0..4) {

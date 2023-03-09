@@ -18,7 +18,6 @@ import java.lang.Thread.State
  */
 class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScreen) :
     SurfaceView(context), SurfaceHolder.Callback {
-    private val SCREEN_NAME_WORDLE = "Wordle"
 
     private val thread: MainThread
 

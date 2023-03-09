@@ -28,6 +28,9 @@ class MainActivity : AppCompatActivity() {
     private val myExecutor = Executors.newSingleThreadExecutor()
     private val myHandler = Handler(Looper.getMainLooper())
 
+    var keyBackCounter = 0;
+    private val SCREEN_NAME_WORDLE = "Wordle"
+
     private var mainGameView //all game logic on one canvas: menu, game, settings, game over, etc
             : SurfaceView? = null
     var bitmap: Bitmap? = null
@@ -70,28 +73,26 @@ class MainActivity : AppCompatActivity() {
         mainGameView = MainGameView(this, gameLogic!!, wordleScreen)
         //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);
 
-        //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);
         val layout = RelativeLayout(context)
         layout.addView(mainGameView)
 
+        // Demonstration possibility to apply any Views over mainGameView. For example, for AdMob View, Buttons, e.t.c.
+
         val button = Button(this)
         // setting height and width of imageview
-        button.layoutParams = LinearLayout.LayoutParams(400, 150)
+        button.layoutParams = LinearLayout.LayoutParams(720 - 40, 150)
         button.x = 20F //setting margin from left
         button.y = 555F //setting margin from top
         button.text = "Press me!"
-        //imageView.setBackgroundColor(Color.RED)
-
-
         layout?.addView(button)
 
-        if (true) {
-            //show canvas game screen
-            setContentView(layout)
-        }
-    }
+        //show canvas game screen
+        setContentView(layout)
 
-    var keyBackCounter = 0;
+        // FIXIT: Bug - 0 x 0 sizes
+        Log.d(TAG, "onCreate: mainGameView ${mainGameView!!.width} x ${mainGameView!!.height}")
+
+    }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                 gameLogic!!.ActiveScreen() is WordleScreen
             //|| gameLogic!!.ActiveScreen() is SettingsScreen
             ) {
-                gameLogic?.SetActiveScreen("Wordle"/*SCREEN_NAME_WORDLE*/)
+                gameLogic?.SetActiveScreen(SCREEN_NAME_WORDLE)
                 return super.onKeyDown(0, event)
             }
         }

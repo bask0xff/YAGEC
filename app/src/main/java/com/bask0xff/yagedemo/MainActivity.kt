@@ -1,10 +1,7 @@
 package com.bask0xff.yagedemo
 
-
 import android.content.Context
 import android.content.pm.ActivityInfo
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.os.*
 import android.os.StrictMode.ThreadPolicy
 import android.util.Log
@@ -21,14 +18,10 @@ import com.bask0xff.yageclib.IScreen
 import com.bask0xff.yageclib.MainGameView
 import com.bask0xff.yagedemo.ui.MenuScreen
 import com.bask0xff.yagedemo.ui.WordleScreen
-import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
-    private val mt: MyTask? = null
-    private val myExecutor = Executors.newSingleThreadExecutor()
-    private val myHandler = Handler(Looper.getMainLooper())
 
     var keyBackCounter = 0;
     private val SCREEN_NAME_WORDLE = "Wordle"
@@ -36,19 +29,14 @@ class MainActivity : AppCompatActivity() {
 
     private var mainGameView //all game logic on one canvas: menu, game, settings, game over, etc
             : SurfaceView? = null
-    var bitmap: Bitmap? = null
-    var canvas: Canvas? = null
+
     private var gameLogic: GameLogic? = null
-    private val wordsDictionary: ArrayList<String>? = null
+
     private var context: Context? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val myInput = 100
-        MyTask("Tasks").execute(myInput)
-
-        doMyTask(myInput)
 
         if (Build.VERSION.SDK_INT > 9) {
             val policy = ThreadPolicy.Builder().permitAll().build()
@@ -137,32 +125,6 @@ class MainActivity : AppCompatActivity() {
         }
         //gameLogic.SaveGames()
         return super.onKeyDown(keyCode, event)
-    }
-
-
-    private fun doMyTask(input: Int){
-        myExecutor.execute {
-            val result = input.toString()
-            myHandler.post {
-                //textView.text = result
-                Log.d(TAG, "doMyTask: " + result)
-            }
-        }
-    }
-
-    inner class MyTask(var text: String): AsyncTask<Int, Void, String>(){
-
-        override fun doInBackground(vararg params: Int?): String {
-            // Convert the input Params:Int
-            // to String and return the Result:String
-            return params[0].toString()
-        }
-
-        // Result:String is set as text in the passed TextView
-        override fun onPostExecute(result: String?) {
-            //textView.text = result
-            Log.d(TAG, "MyTask: " + result)
-        }
     }
 
 }

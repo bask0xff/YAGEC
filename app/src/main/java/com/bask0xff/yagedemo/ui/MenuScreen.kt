@@ -53,9 +53,9 @@ class MenuScreen(name: String, private val gameLogic: GameLogic) :
         val paint = Paint()
         paint.color = Color.YELLOW
         paint.isAntiAlias = true
-        paint.textSize = 42f//(Math.random()*100).toFloat()
+        paint.textSize = 36f
 
-        canvas?.drawText("MENU: $frames ${gameLogic.width()} x ${gameLogic.height()}", ((50f + Math.random()*0f-10f).toFloat()), ((150f + Math.random()*0f-10f).toFloat()), paint);
+        canvas?.drawText("MENU: ${gameLogic.width()} x ${gameLogic.height()} $ticks / $frames", 50f, 50f, paint);
 
         paint.isAntiAlias = true
         for(i in 0..10){

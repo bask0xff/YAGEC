@@ -8,7 +8,6 @@ import com.bask0xff.yageclib.IScreen
 class GameLogicDemo(context: Context, resources: Resources): GameLogic(context, resources) {
 
     private val TAG = GameLogicDemo::class.java.simpleName
-    private var screens: HashMap<String, IScreen?> = java.util.HashMap()
     private var ticks = 0
     private var resources: Resources? = null
     private var context: Context? = null
@@ -16,7 +15,6 @@ class GameLogicDemo(context: Context, resources: Resources): GameLogic(context, 
     init {
         this.resources = resources
         this.context = context
-        screens = HashMap()
     }
 
     override fun width(): Int {
@@ -26,7 +24,7 @@ class GameLogicDemo(context: Context, resources: Resources): GameLogic(context, 
 
     override fun height(): Int {
         return (2400 * .3f).toInt() // Realme GT Master Edition
-        //return 1280//(super.width() * 1.0f).toInt()
+        //return 1280//(super.height() * 1.0f).toInt()
     }
 
     fun Resources(): Resources? {

@@ -27,13 +27,14 @@ class MainGameView(context: Context?, gameLogic: GameLogic, startScreen: IScreen
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         Log.i(TAG, "surfaceChanged")
+        gameLogic.SurfaceChanged(width, height)
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {
         // at this point the surface is created and
         // we can safely start the game loop
         Log.i(TAG, "surfaceCreated: $width x $height")
-        gameLogic.CreateSurface(width, height)
+        gameLogic.SurfaceChanged(width, height)
 
         //solve problem:
         ////java.lang.IllegalThreadStateException: Thread already started.

@@ -6,10 +6,10 @@ import android.graphics.Paint
 import android.util.Log
 import android.view.MotionEvent
 import com.bask0xff.yageclib.BaseScreen
-import com.bask0xff.yageclib.GameLogic
 import com.bask0xff.yageclib.IScreen
+import com.bask0xff.yagedemo.GameLogicDemo
 
-class MenuScreen(name: String, private val gameLogic: GameLogic) :
+class MenuScreen(name: String, private val gameLogic: GameLogicDemo) :
     BaseScreen(name, gameLogic) {
 
     private var ticks = 0

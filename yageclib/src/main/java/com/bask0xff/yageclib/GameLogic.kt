@@ -34,7 +34,7 @@ open class GameLogic(context: Context, resources: Resources) {
         this.onSurfaceCreatedListener = listener
     }
 
-    fun CreateSurface(w: Int, h: Int) {
+    fun SurfaceChanged(w: Int, h: Int) {
         width = w
         height = h
         Log.d(TAG, "CreateSurface: Window size: $width x $height")

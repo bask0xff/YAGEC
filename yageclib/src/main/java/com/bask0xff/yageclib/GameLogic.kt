@@ -5,10 +5,11 @@ import android.content.Context
 import android.content.res.Resources
 import android.util.Log
 
-class GameLogic(context: Context, resources: Resources) {
+open class GameLogic(context: Context, resources: Resources) {
 
-    private var width = 0
-    private var height  = 0
+    //default screen values, but they are would be replaced by new values of real screen size
+    private var width = 1080
+    private var height  = 1920
 
     private val TAG = GameLogic::class.java.simpleName
     private var screens: HashMap<String, IScreen?> = java.util.HashMap()
@@ -40,8 +41,8 @@ class GameLogic(context: Context, resources: Resources) {
         onSurfaceCreatedListener?.SurfaceCreated(width, height)
     }
 
-    fun width(): Int { return width}
-    fun height(): Int { return height}
+    open fun width(): Int { return width}
+    open fun height(): Int { return height}
 
     fun ActiveScreen(): IScreen? {
         return activeScreen

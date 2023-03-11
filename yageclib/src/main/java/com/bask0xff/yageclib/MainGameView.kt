@@ -16,7 +16,7 @@ import java.lang.Thread.State
  * This is the main surface that handles the ontouch events and draws
  * the image to the screen.
  */
-class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScreen) :
+class MainGameView(context: Context?, gameLogic: GameLogic, startScreen: IScreen) :
     SurfaceView(context), SurfaceHolder.Callback {
 
     private val thread: MainThread
@@ -52,11 +52,6 @@ class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScree
             Log.i(TAG, "surfaceCreated, thread error:" + e.message)
         }
         gameLogic.ActiveScreen()?.OnCreate()
-        /*if (gameLogic.ActiveScreen().getClass()
-                .equals(LoadingScreen::class.java)
-        ) (gameLogic.ActiveScreen() as LoadingScreen).LoadDictionary(
-            context
-        )*/
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
@@ -133,7 +128,7 @@ class MainGameView(context: Context?, gameLogic: GameLogic, wordleScreen: IScree
         // create the game loop thread
         thread = MainThread(holder, this)
 
-        gameLogic.SetActiveScreen(wordleScreen)
+        gameLogic.SetActiveScreen(startScreen)
 
         isFocusable = true
     }

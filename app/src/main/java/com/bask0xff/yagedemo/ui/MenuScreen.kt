@@ -71,7 +71,7 @@ class MenuScreen(name: String, private val gameLogic: GameLogic) :
     override fun Update() {}
 
     companion object {
-        private val TAG = WordleScreen::class.java.simpleName
+        private val TAG = MainScreen::class.java.simpleName
     }
 
     init {

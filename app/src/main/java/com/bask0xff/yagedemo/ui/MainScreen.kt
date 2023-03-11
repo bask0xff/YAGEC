@@ -9,7 +9,7 @@ import com.bask0xff.yageclib.BaseScreen
 import com.bask0xff.yageclib.GameLogic
 import com.bask0xff.yageclib.IScreen
 
-class WordleScreen(name: String, private val gameLogic: GameLogic) :
+class MainScreen(name: String, private val gameLogic: GameLogic) :
     BaseScreen(name, gameLogic) {
 
     private var ticks = 0
@@ -71,7 +71,7 @@ class WordleScreen(name: String, private val gameLogic: GameLogic) :
     override fun Update() {}
 
     companion object {
-        private val TAG = WordleScreen::class.java.simpleName
+        private val TAG = MainScreen::class.java.simpleName
     }
 
     init {

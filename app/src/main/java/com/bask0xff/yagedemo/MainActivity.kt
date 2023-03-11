@@ -18,7 +18,7 @@ import com.bask0xff.yageclib.GameLogic.IOnSurfaceCreatedListener
 import com.bask0xff.yageclib.IScreen
 import com.bask0xff.yageclib.MainGameView
 import com.bask0xff.yagedemo.ui.MenuScreen
-import com.bask0xff.yagedemo.ui.WordleScreen
+import com.bask0xff.yagedemo.ui.MainScreen
 
 class MainActivity : AppCompatActivity() {
 
@@ -97,8 +97,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addNewScreens(gameLogic: GameLogic) {
-        val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic!!)
-        gameLogic!!.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
+        val mainScreen: IScreen = MainScreen(SCREEN_NAME_WORDLE, gameLogic!!)
+        gameLogic!!.AddScreen((mainScreen as MainScreen).Name(), mainScreen)
 
         val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic!!)
         gameLogic!!.AddScreen((menuScreen as MenuScreen).Name(), menuScreen)
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
         gameLogic.AddScreen((settingsScreen as SettingsScreen).Name(), settingsScreen)
        */
 
-        mainGameView = MainGameView(this, gameLogic!!, wordleScreen)
+        mainGameView = MainGameView(this, gameLogic!!, mainScreen)
         //mainGameView = (MainGameView) findViewById(R.id -or- layout.game);
     }
 
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
             if (
                 keyBackCounter < 2 &&
                 //gameLogic!!.ActiveScreen() is GameScreen ||
-                gameLogic!!.ActiveScreen() is WordleScreen
+                gameLogic!!.ActiveScreen() is MainScreen
             //|| gameLogic!!.ActiveScreen() is SettingsScreen
             ) {
                 gameLogic?.SetActiveScreen(SCREEN_NAME_WORDLE)

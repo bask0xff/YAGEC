@@ -41,6 +41,7 @@ open class GameLogic(context: Context, resources: Resources) {
         onSurfaceCreatedListener?.SurfaceCreated(width, height)
     }
 
+    // if you want to test your app in different screen sizes, you can change it manually
     open fun width(): Int { return width}
     open fun height(): Int { return height}
 

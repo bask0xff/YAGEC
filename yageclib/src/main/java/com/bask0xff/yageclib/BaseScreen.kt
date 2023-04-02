@@ -7,14 +7,14 @@ import android.view.MotionEvent
 open class BaseScreen(private val name: String, private val gameLogic: GameLogic) : IScreen {
 
     private var swipeDirection: GameLogic.SwipeDirection = GameLogic.SwipeDirection.NONE
-    var swipeState = 0; // 0 -nothing, 1 - start, 2 - moving, 3 - end
-    var swipeDx = 0
-    var swipeDy = 0
-    var swipeGradient = 0
-    var touchStartX = 0
-    var touchStartY = 0
-    var touchEndX = 0
-    var touchEndY = 0
+    private var swipeState = 0; // 0 -nothing, 1 - start, 2 - moving, 3 - end
+    private var swipeDx = 0
+    private var swipeDy = 0
+    private var swipeGradient = 0
+    private var touchStartX = 0
+    private var touchStartY = 0
+    private var touchEndX = 0
+    private var touchEndY = 0
 
     fun Name(): String {
         return name

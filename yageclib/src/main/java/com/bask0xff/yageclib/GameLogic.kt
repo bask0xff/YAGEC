@@ -5,8 +5,9 @@ import android.content.Context
 import android.content.res.Resources
 import android.util.Log
 
-class GameLogic(context: Context, resources: Resources) {
+open class GameLogic(context: Context, resources: Resources) {
 
+    //default screen values, but they are would be replaced by new values of real screen size
     private var width = 0
     private var height  = 0
 
@@ -23,10 +24,26 @@ class GameLogic(context: Context, resources: Resources) {
         screens = HashMap()
     }
 
-    fun CreateSurface(width: Int, height: Int) {
-        this.width = width
-        this.height = height
+    interface IOnSurfaceCreatedListener{
+        fun SurfaceCreated(w: Int, h: Int)
     }
+
+    lateinit var onSurfaceCreatedListener: IOnSurfaceCreatedListener
+
+    fun SetOnSurfaceCreatedListener(listener: IOnSurfaceCreatedListener){
+        this.onSurfaceCreatedListener = listener
+    }
+
+    fun SurfaceChanged(w: Int, h: Int) {
+        width = w
+        height = h
+        Log.d(TAG, "CreateSurface: Window size: $width x $height")
+        onSurfaceCreatedListener?.SurfaceCreated(width, height)
+    }
+
+    // if you want to test your app in different screen sizes, you can change it manually
+    open fun width(): Int { return width}
+    open fun height(): Int { return height}
 
     fun ActiveScreen(): IScreen? {
         return activeScreen
@@ -67,6 +84,10 @@ class GameLogic(context: Context, resources: Resources) {
         Log.i(TAG, "ActiveScreen is $name")
         activeScreen?.OnShow()
         Log.i(TAG, "ActiveScreen $name shown")
+    }
+
+    fun onSurfaceCreated(function: () -> Unit) {
+        Log.d(TAG, "onSurfaceCreated: ")
     }
 
 }

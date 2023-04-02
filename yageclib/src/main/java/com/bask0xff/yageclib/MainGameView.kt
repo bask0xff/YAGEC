@@ -16,9 +16,8 @@ import java.lang.Thread.State
  * This is the main surface that handles the ontouch events and draws
  * the image to the screen.
  */
-class MainGameView(context: Context?, gameLogic: GameLogic) :
+class MainGameView(context: Context?, gameLogic: GameLogic, startScreen: IScreen) :
     SurfaceView(context), SurfaceHolder.Callback {
-    private val SCREEN_NAME_WORDLE = "Wordle"
 
     private val thread: MainThread
 
@@ -28,13 +27,14 @@ class MainGameView(context: Context?, gameLogic: GameLogic) :
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         Log.i(TAG, "surfaceChanged")
+        gameLogic.SurfaceChanged(width, height)
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {
         // at this point the surface is created and
         // we can safely start the game loop
-        Log.i(TAG, "surfaceCreated: " + width + "x" + height)
-        gameLogic.CreateSurface(width, height)
+        Log.i(TAG, "surfaceCreated: $width x $height")
+        gameLogic.SurfaceChanged(width, height)
 
         //solve problem:
         ////java.lang.IllegalThreadStateException: Thread already started.
@@ -53,11 +53,6 @@ class MainGameView(context: Context?, gameLogic: GameLogic) :
             Log.i(TAG, "surfaceCreated, thread error:" + e.message)
         }
         gameLogic.ActiveScreen()?.OnCreate()
-        /*if (gameLogic.ActiveScreen().getClass()
-                .equals(LoadingScreen::class.java)
-        ) (gameLogic.ActiveScreen() as LoadingScreen).LoadDictionary(
-            context
-        )*/
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
@@ -92,13 +87,17 @@ class MainGameView(context: Context?, gameLogic: GameLogic) :
 				thread.setRunning(false);
 				((Activity)getContext()).finish();
 			}*/
+            val activeScreen: IScreen = gameLogic.ActiveScreen()!!
+            activeScreen.OnTouchDown(event.x, event.y)
         }
         if (event.action == MotionEvent.ACTION_MOVE) {
             // the gestures
+            val activeScreen: IScreen = gameLogic.ActiveScreen()!!
+            activeScreen.OnMove(event)
         }
         if (event.action == MotionEvent.ACTION_UP) {
-            //val activeScreen: IScreen = gameLogic.ActiveScreen()
-            //activeScreen.OnTouch(event.x, event.y)
+            val activeScreen: IScreen = gameLogic.ActiveScreen()!!
+            activeScreen.OnTouchUp(event.x, event.y)
         }
         return true
     }
@@ -130,20 +129,7 @@ class MainGameView(context: Context?, gameLogic: GameLogic) :
         // create the game loop thread
         thread = MainThread(holder, this)
 
-        val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic)
-        /*val loadingScreen: IScreen = LoadingScreen(SCREEN_NAME_LOADING, gameLogic)
-        val menuScreen: IScreen = MenuScreen(SCREEN_NAME_MENU, gameLogic)
-        val newGame: IScreen = NewGameScreen(SCREEN_NAME_NEW_GAME, gameLogic)
-        val settingsScreen: IScreen = SettingsScreen(SCREEN_NAME_SETTINGS, gameLogic)
-        val wordleScreen: IScreen = WordleScreen(SCREEN_NAME_WORDLE, gameLogic)
-        gameLogic.AddScreen((loadingScreen as LoadingScreen).Name(), loadingScreen)
-        gameLogic.AddScreen((menuScreen as MenuScreen).Name(), menuScreen)
-        gameLogic.AddScreen((newGame as NewGameScreen).Name(), newGame)
-        gameLogic.AddScreen((settingsScreen as SettingsScreen).Name(), settingsScreen)
-       */
-
-        gameLogic.AddScreen((wordleScreen as WordleScreen).Name(), wordleScreen)
-        gameLogic.SetActiveScreen(wordleScreen)
+        gameLogic.SetActiveScreen(startScreen)
 
         isFocusable = true
     }

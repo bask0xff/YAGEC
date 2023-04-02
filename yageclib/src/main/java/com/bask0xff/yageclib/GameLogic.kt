@@ -18,6 +18,8 @@ open class GameLogic(context: Context, resources: Resources) {
     private var resources: Resources? = null
     private var context: Context? = null
 
+    enum class SwipeDirection { NONE, SWIPE_LEFT, SWIPE_RIGHT, SWIPE_UP, SWIPE_DOWN }
+
     init{
         this.resources = resources
         this.context = context

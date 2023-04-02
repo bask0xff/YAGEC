@@ -79,9 +79,16 @@ open class BaseScreen(private val name: String, private val gameLogic: GameLogic
             }
             OnSwipe(swipeDirection)
         }
+        else
+            OnTouch(x, y)
 
         swipeState = 0
     }
+
+    override fun OnTouch(x: Float, y: Float) {
+
+    }
+
     override fun OnMove(event: MotionEvent) {
         swipeState = 2
     }

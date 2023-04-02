@@ -16,4 +16,6 @@ interface IScreen {
     fun SwitchScreen(screen: IScreen)
     fun SwitchScreen(name: String)
     fun OnDestroy()
+
+    fun OnSwipe(swipeDirection: GameLogic.SwipeDirection)
 }

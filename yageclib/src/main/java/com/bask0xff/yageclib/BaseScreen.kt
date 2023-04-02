@@ -1,6 +1,5 @@
 package com.bask0xff.yageclib
 
-
 import android.graphics.Canvas
 import android.util.Log
 import android.view.MotionEvent
@@ -35,6 +34,7 @@ open class BaseScreen(private val name: String, private val gameLogic: GameLogic
     }
 
     override fun OnDestroy() {}
+
     override fun OnShow() {
         Log.i(TAG, "Show:$name")
     }
@@ -77,12 +77,17 @@ open class BaseScreen(private val name: String, private val gameLogic: GameLogic
                 else
                     swipeDirection = GameLogic.SwipeDirection.SWIPE_UP
             }
+            OnSwipe(swipeDirection)
         }
 
         swipeState = 0
     }
     override fun OnMove(event: MotionEvent) {
         swipeState = 2
+    }
+
+    override fun OnSwipe(swipeDirection: GameLogic.SwipeDirection) {
+
     }
 
     companion object {

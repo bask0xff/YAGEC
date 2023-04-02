@@ -12,6 +12,7 @@ interface IScreen {
     fun Destroy()
     fun OnTouchDown(x: Float, y: Float)
     fun OnTouchUp(x: Float, y: Float)
+    fun OnTouch(x: Float, y: Float)
     fun OnMove(event: MotionEvent)
     fun SwitchScreen(screen: IScreen)
     fun SwitchScreen(name: String)

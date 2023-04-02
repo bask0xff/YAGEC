@@ -38,6 +38,10 @@ class MainScreen(name: String, private val gameLogic: GameLogicDemo) :
         Log.d(TAG, "OnMove ${event.action}: ${event.x.toInt()}, ${event.y.toInt()}")
     }
 
+    override fun OnTouch(x: Float, y: Float) {
+
+    }
+
     override fun OnTouchDown(x: Float, y: Float) {
         Log.d(TAG, "OnTouchDown: ${x.toInt()}, ${y.toInt()}")
     }

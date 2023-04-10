@@ -1,16 +1,16 @@
 # YAGEC
-YAGEC - Yet Another Game Engine (Canvas version) for developing 2D games for Android mobile devices, such as 3-in-a-row, 2048, chess, word games, and others.
 
-How to 
-More info see here: https://jitpack.io/#bask0xff/YAGEC
+YAGEC - Yet Another Game Engine (Canvas version) is for developing 2D games for Android mobile devices, such as match-three, 2048, chess, word games, and others.
 
-Docs in Russian: https://familiar-september-058.notion.site/YAGEC-3ab2de22563d4e72a7f7fd6896931388
+For more information, please see here: https://jitpack.io/#bask0xff/YAGEC
 
-To get a Git project into your build:
+Documentation is available in Russian at: https://familiar-september-058.notion.site/YAGEC-3ab2de22563d4e72a7f7fd6896931388
 
-Step 1. Add the JitPack repository to your build file
+To include this Git project in your build:
 
-Add it in your root build.gradle at the end of repositories:
+Step 1. Add the JitPack repository to your build file.
+
+Add the following at the end of your root build.gradle file's repositories section:
 
 	allprojects {
 		repositories {

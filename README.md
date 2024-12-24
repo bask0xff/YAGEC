@@ -4,7 +4,7 @@ YAGEC - Yet Another Game Engine (Canvas version) is for developing 2D games for 
 
 For more information, please see here: https://jitpack.io/#bask0xff/YAGEC
 
-Documentation is available in Russian at: https://familiar-september-058.notion.site/YAGEC-3ab2de22563d4e72a7f7fd6896931388
+Documentation is available in Russian at: https://www.notion.so/YAGEC-3ab2de22563d4e72a7f7fd6896931388
 
 To include this Git project in your build:
 

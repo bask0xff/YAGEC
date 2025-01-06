@@ -1,6 +1,6 @@
 # YAGEC
 
-YAGEC - Yet Another Game Engine (Canvas version) is for developing 2D games for Android mobile devices, such as match-three, 2048, chess, word games, and others.
+YAGEC - Yet Another Game Engine (Canvas version) is for developing 2D games for Android mobile devices, such as checkers, match-three, 2048, chess, word games, and others.
 
 For more information, please see here: https://jitpack.io/#bask0xff/YAGEC
 

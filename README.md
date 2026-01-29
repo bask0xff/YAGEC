@@ -6,6 +6,14 @@ For more information, please see here: https://jitpack.io/#bask0xff/YAGEC
 
 Documentation is available in Russian at: https://familiar-september-058.notion.site/YAGEC-3ab2de22563d4e72a7f7fd6896931388
 
+## Donate
+USDT TRC20 : THR5VLuZWn7z8iiXwJ1WK9Sg4E6Ae8qUmk
+
+USDT ERC20 : 0x4b5fAF36e95918AD3e65bF9bd42E1FDEca93db2e
+
+Bitcoin BTC : 1AqcSbBw1UDULszboqi8mq8jE7Kykwwncm
+
+## Instruction
 To include this Git project in your build:
 
 Step 1. Add the JitPack repository to your build file.
